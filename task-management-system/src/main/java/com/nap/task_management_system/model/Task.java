@@ -9,6 +9,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -18,16 +22,24 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(max = 100)
     private String title;
+
+    @Size(max = 2000)
     private String description;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     private Priority priority;
 
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @Future
+    @NotNull
     private LocalDateTime deadline;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

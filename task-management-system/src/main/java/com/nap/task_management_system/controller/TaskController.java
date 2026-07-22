@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nap.task_management_system.model.Task;
 import com.nap.task_management_system.service.TaskService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class TaskController {
 
@@ -23,7 +25,7 @@ public class TaskController {
     }
 
     @PostMapping("/tasks")
-    public Task saveTask(@RequestBody Task task) {
+    public Task saveTask(@Valid @RequestBody Task task) {
         return taskService.save(task);
     }
 
