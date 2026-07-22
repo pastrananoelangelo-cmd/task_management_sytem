@@ -25,11 +25,19 @@ public class TaskService {
     }
 
     public Task findById(Long id) {
-        return repository.findById(id);
+        return repository.findById(id).orElse(null);
     }
 
-    public Task update(Long id, Task task) {
-        return repository.update(id, task);
+    public Task update(Long id, Task updatedTask) {
+        Task task = repository.findById(id).orElseThrow();
+
+        task.setTitle(updatedTask.getTitle());
+        task.setDescription(updatedTask.getDescription());
+        task.setPriority(updatedTask.getPriority());
+        task.setDeadline(updatedTask.getDeadline());
+        task.setStatus(updatedTask.getStatus());
+
+        return repository.save(task);
     }
 
     public void deleteById(Long id) {

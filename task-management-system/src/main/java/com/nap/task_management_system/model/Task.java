@@ -3,27 +3,39 @@ package com.nap.task_management_system.model;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 
 @Entity
+@Table(name = "tasks")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final Long id;
+    private Long id;
 
     private String title;
     private String description;
+
+    @Enumerated(EnumType.STRING)
     private Priority priority;
+
+    @Enumerated(EnumType.STRING)
     private Status status;
+
     private LocalDateTime deadline;
-    private final LocalDateTime createdAt;
+    private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Task(Long id, String title, String description, Priority priority, LocalDateTime deadline) {
-        this.id = id;
+    protected Task() {
+        // Required by JPA
+    }
+
+    public Task(String title, String description, Priority priority, LocalDateTime deadline) {
         this.title = title;
         this.description = description;
         this.priority = priority;
