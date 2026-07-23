@@ -2,13 +2,9 @@ package com.nap.task_management_system.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.nap.task_management_system.model.Priority;
+import com.nap.task_management_system.model.Status;
+import org.springframework.web.bind.annotation.*;
 
 import com.nap.task_management_system.model.Task;
 import com.nap.task_management_system.service.TaskService;
@@ -30,8 +26,9 @@ public class TaskController {
     }
 
     @GetMapping("/tasks")
-    public List<Task> getTasks() {
-        return taskService.findAll();
+    public List<Task> getTasks(@RequestParam(required = false) Priority priority,
+                               @RequestParam(required = false) Status status) {
+        return taskService.findBy(priority, status);
     }
 
     @GetMapping("/tasks/{id}")

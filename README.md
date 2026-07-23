@@ -198,7 +198,7 @@ This structure promotes separation of concerns and improves maintainability.
 
 # Development Roadmap
 
-## Version 1.0
+## ✅ Version 1.0
 
 Core Features
 
@@ -212,7 +212,7 @@ Core Features
 
 ---
 
-## Version 1.1
+## Version 2.0
 
 Enhanced Task Management
 
@@ -220,11 +220,12 @@ Enhanced Task Management
 * Filter by priority
 * Filter by status
 * Sorting
+* DTOs (Data Transfer Objects)
 * Improved API responses
 
 ---
 
-## Version 1.2
+## Version 3.0
 
 User Management
 
@@ -235,7 +236,7 @@ User Management
 
 ---
 
-## Version 2.0
+## Version 4.0
 
 Advanced Features
 
